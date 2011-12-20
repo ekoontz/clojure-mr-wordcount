@@ -1,10 +1,11 @@
-.PHONY: test clean repl
+.PHONY: test clean repl classes
 
 clean:
 	-rm `find classes -name "*.class"`
 
-classes:
+classes: 
 	-mkdir -p classes/com/curry/utils/calc
+	-mkdir -p classes/com/gentest
 
 classes/MyJavaClass.class: MyJavaClass.java classes
 	javac -d classes -cp .:classes $<
