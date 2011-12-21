@@ -1,4 +1,4 @@
-(ns org.wordcount.gen_clojure
+(ns org.hadoopgen.gen_clojure
   (:import (org.wordcount AbstractWordCount))
   (:gen-class
    :name org.wordcount.WordCount

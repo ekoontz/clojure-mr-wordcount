@@ -1,4 +1,4 @@
-(load "org.wordcount.gen_clojure")
+(load "org.hadoopgen.gen_clojure")
 
 (.getSecret (org.wordcount.WordCount. "foo"))
 

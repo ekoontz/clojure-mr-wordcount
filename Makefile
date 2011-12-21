@@ -6,18 +6,19 @@ clean:
 lib/clojure-1.3.0.jar:
 	lein deps
 
-classes/org/wordcount:
+classes/org/wordcount classes/com/wordcount:
 	-mkdir -p $@
 
-classes/org/wordcount/AbstractWordCount.class: src/org/wordcount/AbstractWordCount.java classes/org/wordcount
+classes/com/wordcount/AbstractWordCount.class: src/com/wordcount/AbstractWordCount.java classes/com/wordcount
 	javac -d classes -cp .:classes $<
 
-classes/org/wordcount/WordCount.class: lib/clojure-1.3.0.jar classes/org/wordcount/AbstractWordCount.class
-	echo "(compile 'org.wordcount.gen_clojure)" | java -cp $(CLASSPATH) clojure.main
+classes/org/wordcount/WordCount.class: lib/clojure-1.3.0.jar classes/com/wordcount/AbstractWordCount.class
+	echo "(compile 'org.hadoopgen.gen_clojure)" | java -cp $(CLASSPATH) clojure.main
 
 test: java_test clj_test
+	echo "all tests passed."
 
-java_test: classes/org/wordcount/AbstractWordCount.class classes/org/wordcount/WordCount.class
+java_test: classes/com/wordcount/AbstractWordCount.class classes/org/wordcount/WordCount.class
 	java -cp $(CLASSPATH) org.wordcount.WordCount
 
 clj_test: lib/clojure-1.3.0.jar classes/org/wordcount/WordCount.class classes/org/wordcount/WordCount.class
