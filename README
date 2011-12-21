@@ -1,13 +1,4 @@
-# cia-ch-5
+Run: "make clean test".
+TODO: better leiningen integration: for now, it's only used to fetch the clojure jar.
 
-FIXME: write description
 
-## Usage
-
-FIXME: write
-
-## License
-
-Copyright (C) 2011 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
