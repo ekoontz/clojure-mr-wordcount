@@ -9,7 +9,7 @@ lib/clojure-1.3.0.jar:
 classes/com/gentest:
 	-mkdir -p $@
 
-classes/com/gentest/AbstractJavaClass.class: src/com/gentest/AbstractJavaClass.java classes
+classes/com/gentest/AbstractJavaClass.class: src/com/gentest/AbstractJavaClass.java classes/com/gentest
 	javac -d classes -cp .:classes $<
 
 classes/com/gentest/ConcreteClojureClass.class: lib/clojure-1.3.0.jar
