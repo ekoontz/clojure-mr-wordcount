@@ -10,10 +10,6 @@ public abstract class AbstractJavaClass {
 
     public abstract String getCurrentStatus();
 
-    public abstract String getCurrentStats();
-
-    public abstract String getFoo();
-
     public String getSecret() {
 	return "The Secret";
     }

@@ -8,36 +8,21 @@
    :implements [Runnable]
    :init initialize
    :state localState
-   :methods [[stateValue [] String]
-             [specificMethod [] String]]
- 
-   ))
+   :methods [[stateValue [] String]]))
 
 (defn -initialize
   ([s1]
      (println "Init value: " s1)
      [[s1 "default"] (ref s1)])
   ([s1 s2]
-     (println "Init values:" s1 "," s2)))
-;     [[s2] (ref s2)]))
+     (println "Init values:" s1 "," s2)
+     [[s1 s2] (ref s2)]))
 
 (defn -getCurrentStatus [this]
-  "getCurrentStatus from - com.gentest.ConcreteClojureClass - what is up!!")
-
-(defn -getCurrentStats [this]
-  "getCurrentStats from - com.gentest.ConcreteClojureClass - what is down!!")
+  "getCurrentStatus from - com.gentest.ConcreteClojureClass")
 
 (defn -stateValue [this]
   @(.localState this))
-
-(defn -stateValue2 [this]
-  "stateValue2 HAS BEEN CALLED!!")
-
-(defn -getFoo [this]
-  "I want to buy a large backpack..")
-
-(defn -specificMethod [this]
-  "only the concrete class has this..(specificMethod)")
 
 (defn -run [this]
   (println "In run!")
@@ -45,25 +30,15 @@
   (dosync (ref-set (.localState this) "GO")))
 
 (defn -main []
-  (println "BEGINNING..")
   (let [g (new com.gentest.ConcreteClojureClass "READY")]
-    (println "FIRST G CONSTRUCTOR...")
     (println (.getCurrentStatus g))
-    (println (.getCurrentStats g))
-    (println (.getFoo g))
-    (println (.specificMethod g))
-                                        ;    (println (.getCurrentStatus2 g)))
     (println (.getSecret g))
-    (println (.stateValue g))
-  )
+    (println (.stateValue g)))
   (let [g (new com.gentest.ConcreteClojureClass "READY" "SET")]
-    (println "SECOND G CONSTRUCTOR..."))
-;    (println (.stateValue g))
-;    (.start (Thread. g))
-;    (Thread/sleep 1000)
-;    (println (.stateValue g))
-;    ))
-)
+    (println (.stateValue g))
+    (.start (Thread. g))
+    (Thread/sleep 1000)
+    (println (.stateValue g))))
 
 
 
