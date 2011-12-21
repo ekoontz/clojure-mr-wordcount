@@ -1,4 +1,4 @@
-package org.wordcount;
+package com.wordcount;
 
 public abstract class AbstractWordCount {
     public AbstractWordCount(String a, String b) {

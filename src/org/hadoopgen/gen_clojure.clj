@@ -1,8 +1,8 @@
 (ns org.hadoopgen.gen_clojure
-  (:import (org.wordcount AbstractWordCount))
+  (:import (com.wordcount AbstractWordCount))
   (:gen-class
    :name org.wordcount.WordCount
-   :extends org.wordcount.AbstractWordCount
+   :extends com.wordcount.AbstractWordCount
    :constructors {[String] [String]
                   [String String] [String String]}
    :implements [Runnable]
