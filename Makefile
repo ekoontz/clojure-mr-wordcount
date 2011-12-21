@@ -1,25 +1,23 @@
-.PHONY: test clean repl classes compile-gen-clojure
-CLASSPATH=.:classes:src:/Users/ekoontz/.m2/repository/org/clojure/clojure/1.3.0/clojure-1.3.0.jar
+.PHONY: test clean repl
+CLASSPATH=.:classes:src:lib/clojure-1.3.0.jar
 clean:
 	-rm `find classes -name "*.class"`
 
-classes: 
-	-mkdir -p classes/com/curry/utils/calc
-	-mkdir -p classes/com/gentest
+lib/clojure-1.3.0.jar:
+	lein deps
 
-classes/MyJavaClass.class: MyJavaClass.java classes
-	javac -d classes -cp .:classes $<
-
+classes: classes/com/gentest
+	-mkdir -p $<
 
 classes/com/gentest/AbstractJavaClass.class: src/com/gentest/AbstractJavaClass.java classes
 	javac -d classes -cp .:classes $<
 
-repl:
-	rlwrap java -cp $(CLASSPATH) clojure.main
-
 classes/com/gentest/ConcreteClojureClass.class:
 	echo "(compile 'com.gentest.gen_clojure)" | java -cp $(CLASSPATH) clojure.main
 
-test: classes/MyJavaClass.class classes/com/gentest/AbstractJavaClass.class classes/com/gentest/ConcreteClojureClass.class
-	java -cp .:classes MyJavaClass foo
+test: classes/com/gentest/AbstractJavaClass.class classes/com/gentest/ConcreteClojureClass.class
 	java -cp $(CLASSPATH) com.gentest.ConcreteClojureClass
+
+repl:
+	rlwrap java -cp $(CLASSPATH) clojure.main
+
