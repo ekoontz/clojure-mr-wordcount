@@ -12,7 +12,7 @@ public abstract class AbstractJavaClass {
 
     public abstract String getCurrentStats();
 
-    //    public abstract String getFoo();
+    public abstract String getFoo();
 
     public String getSecret() {
 	return "The Secret";

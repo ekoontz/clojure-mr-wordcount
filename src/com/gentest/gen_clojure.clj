@@ -8,7 +8,9 @@
    :implements [Runnable]
    :init initialize
    :state localState
-   :method [[stateValue [] String]]
+   :methods [[stateValue [] String]
+             [specificMethod [] String]]
+ 
    ))
 
 (defn -initialize
@@ -31,8 +33,11 @@
 (defn -stateValue2 [this]
   "stateValue2 HAS BEEN CALLED!!")
 
-;;(defn -getFoo [this]
-;;  "I want to buy a large backpack..")
+(defn -getFoo [this]
+  "I want to buy a large backpack..")
+
+(defn -specificMethod [this]
+  "only the concrete class has this..(specificMethod)")
 
 (defn -run [this]
   (println "In run!")
@@ -43,13 +48,13 @@
   (println "BEGINNING..")
   (let [g (new com.gentest.ConcreteClojureClass "READY")]
     (println "FIRST G CONSTRUCTOR...")
-;    (println (.getFoo g))
     (println (.getCurrentStatus g))
     (println (.getCurrentStats g))
-;    (println (.getCurrentStatus2 g)))
-;    (println (.getSecret g))
-;    (println (.stateValue2 g)))
-  ;;    (println (.stateValue g)))
+    (println (.getFoo g))
+    (println (.specificMethod g))
+                                        ;    (println (.getCurrentStatus2 g)))
+    (println (.getSecret g))
+    (println (.stateValue g))
   )
   (let [g (new com.gentest.ConcreteClojureClass "READY" "SET")]
     (println "SECOND G CONSTRUCTOR..."))
