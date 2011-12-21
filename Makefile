@@ -1,7 +1,7 @@
 .PHONY: test clean repl clj_test java_test
 CLASSPATH=.:classes:src:lib/clojure-1.3.0.jar
 clean:
-	-rm `find classes -name "*.class"`
+	-rm `find classes -name "*.class"` `find src -name "*~"` # remove class files and emacs auto-saved files.
 
 lib/clojure-1.3.0.jar:
 	lein deps
