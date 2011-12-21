@@ -10,6 +10,10 @@ classes:
 classes/MyJavaClass.class: MyJavaClass.java classes
 	javac -d classes -cp .:classes $<
 
+
+classes/com/gentest/AbstractJavaClass.class: src/com/gentest/AbstractJavaClass.java classes
+	javac -d classes -cp .:classes $<
+
 repl:
 	rlwrap java -classpath .:classes:src:/Users/ekoontz/.m2/repository/org/clojure/clojure/1.3.0/clojure-1.3.0.jar clojure.main
 
