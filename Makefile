@@ -36,6 +36,7 @@ clj_test: lib/clojure-1.3.0.jar classes/org/wordcount/WordCount.class classes/or
 	echo "(load \"org/wordcount/test\")" | java -cp $(CLASSPATH) clojure.main
 
 mr_test: classes wc.jar
+	hadoop fs -rmr hdfs://localhost:9000/hd-out/
 	hadoop jar wc.jar org.wordcount.mapreduce hdfs://localhost:9000/hd-in hdfs://localhost:9000/hd-out 
 
 repl:

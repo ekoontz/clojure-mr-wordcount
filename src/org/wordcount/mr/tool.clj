@@ -12,14 +12,10 @@
  :implements ["org.apache.hadoop.util.Tool"]
  :main true)
 
-;; now:
-;; (.getConf (org.wordcount.mapreduce.tool.))
-;; works.
-
 (defn -run [#^Tool this args]
   (doto (JobConf. (.getConf this) (.getClass this))
-    (.setJobName "tool")
-    (.setJar "/Users/ekoontz/cia-ch-5/wc.jar")
+    (.setJobName "doesThisNameMatterOrNot")
+    (.setJar "wc.jar")
     (.setOutputKeyClass Text)
     (.setOutputValueClass LongWritable)
     (.setMapperClass (Class/forName "org.wordcount.mapreduce.mapper"))
