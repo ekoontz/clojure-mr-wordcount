@@ -17,9 +17,9 @@
 ;; works.
 
 (defn -run [#^Tool this args]
-  (println "-run: here we go..")
   (doto (JobConf. (.getConf this) (.getClass this))
-    (.setJobName "mywordcount")
+    (.setJobName "tool")
+    (.setJar "/Users/ekoontz/cia-ch-5/wc.jar")
     (.setOutputKeyClass Text)
     (.setOutputValueClass LongWritable)
     (.setMapperClass (Class/forName "org.wordcount.mapreduce.mapper"))
