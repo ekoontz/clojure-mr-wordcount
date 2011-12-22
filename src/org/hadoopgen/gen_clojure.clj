@@ -1,18 +1,21 @@
 (ns org.hadoopgen.gen_clojure)
 
-(defn do-gen-class [] 
-  (gen-class 
-   :name org.wordcount.WordCount
-   :extends com.wordcount.AbstractWordCount
-   :constructors {[String] [String]
-                  [String String] [String String]}
-   :implements [Runnable]
-   :init initialize
-   :state localState
-   :main true
-   :methods [[stateValue [] String]]))
+(defn do-gen-class [classname] 
+  (do
+    (println "DOING GEN CLASS..")
+    (let [stateValue 42]
+      (eval '(gen-class 
+              :name org.wordcount.WordCount
+              :extends com.wordcount.AbstractWordCount
+              :constructors {[String] [String]
+                             [String String] [String String]}
+              :implements [Runnable]
+              :init initialize
+              :state localState
+              :main true
+              :methods [[stateValue [] String]])))))
 
-(do-gen-class)
+(do-gen-class 'org.wordcount.WordCount)
 
 (defn -initialize
   ([s1]
