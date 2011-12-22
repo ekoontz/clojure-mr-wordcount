@@ -1,16 +1,18 @@
-(ns org.hadoopgen.gen_clojure
-  (:import (com.wordcount AbstractWordCount)))
+(ns org.hadoopgen.gen_clojure)
 
-(gen-class 
- :name org.wordcount.WordCount
- :extends com.wordcount.AbstractWordCount
- :constructors {[String] [String]
-                [String String] [String String]}
- :implements [Runnable]
- :init initialize
- :state localState
- :main true
- :methods [[stateValue [] String]])
+(defn do-gen-class [] 
+  (gen-class 
+   :name org.wordcount.WordCount
+   :extends com.wordcount.AbstractWordCount
+   :constructors {[String] [String]
+                  [String String] [String String]}
+   :implements [Runnable]
+   :init initialize
+   :state localState
+   :main true
+   :methods [[stateValue [] String]]))
+
+(do-gen-class)
 
 (defn -initialize
   ([s1]
