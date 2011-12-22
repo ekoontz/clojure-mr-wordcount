@@ -9,7 +9,7 @@ lib/clojure-1.3.0.jar:
 classes/org/wordcount classes/com/wordcount:
 	-mkdir -p $@
 
-classes: classes/org/wordcount/mr/config.class classes/org/wordcount/mr/mapper.class classes/org/wordcount/mr/reducer.class
+classes: classes/org/wordcount/mr/config.class 
 
 classes/com/wordcount/AbstractWordCount.class: src/com/wordcount/AbstractWordCount.java classes/com/wordcount
 	javac -d classes -cp .:classes $<
