@@ -22,7 +22,7 @@ java_test: classes/com/wordcount/AbstractWordCount.class classes/org/wordcount/W
 	java -cp $(CLASSPATH) org.wordcount.WordCount
 
 clj_test: lib/clojure-1.3.0.jar classes/org/wordcount/WordCount.class classes/org/wordcount/WordCount.class
-	echo "(load \"org/wordcount\")" | java -cp $(CLASSPATH) clojure.main
+	echo "(load \"org/wordcount/test\")" | java -cp $(CLASSPATH) clojure.main
 
 repl:
 	rlwrap java -cp $(CLASSPATH) clojure.main
