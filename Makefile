@@ -26,12 +26,6 @@ classes/org/wordcount/mr/config.class: lib/clojure-1.3.0.jar src/org/wordcount/m
 wc.jar: classes/org/wordcount/mr/config.class
 	jar -cf $@ classes
 
-classes/org/wordcount/mr/mapper.class: lib/clojure-1.3.0.jar src/org/wordcount/mr/mapper.clj
-	echo "(do (load \"org/wordcount/mr/mapper\") (compile 'org.wordcount.mr))" | java -cp $(CLASSPATH) clojure.main
-
-classes/org/wordcount/mr/reducer.class: lib/clojure-1.3.0.jar src/org/wordcount/mr/reducer.clj 
-	echo "(do (load \"org/wordcount/mr/reducer\") (compile 'org.wordcount.mr))" | java -cp $(CLASSPATH) clojure.main
-
 test: classes java_test clj_test mr_test
 	echo "all tests passed."
 
