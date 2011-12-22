@@ -1,4 +1,4 @@
-(ns org.wordcount.mr.reducer)
+(ns org.wordcount.mr)
 
 (gen-class 
  :name org.wordcount.mr.Reducer

@@ -1,4 +1,4 @@
-(ns org.wordcount.mr.config)
+(ns org.wordcount.mr)
 
 (gen-class 
  :name org.wordcount.mr.Config
@@ -12,14 +12,4 @@
   )
 
 (defn -main []
-  (let [g (new org.wordcount.WordCount "READY")]
-    (println (.getCurrentStatus g))
-    (println (.getSecret g))
-    (println (.stateValue g)))
-  (let [g (new org.wordcount.WordCount "READY" "SET")]
-    (println (.stateValue g))
-    (.start (Thread. g))
-    (Thread/sleep 1000)
-    (println (.stateValue g))))
-
-;(compile 'org.wordcount.mr.config)
+  (println "config's main is being called.."))
