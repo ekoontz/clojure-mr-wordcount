@@ -30,8 +30,6 @@
   (println "I'm a" (class this))
   (dosync (ref-set (.localState this) "GO")))
 
-(compile 'org.wordcount)
-
 (defn -main []
   (let [g (new org.wordcount.WordCount "READY")]
     (println (.getCurrentStatus g))
@@ -43,8 +41,4 @@
     (Thread/sleep 1000)
     (println (.stateValue g))))
 
-(.getSecret (org.wordcount.WordCount. "foo"))
-
-(def myobj (org.wordcount.WordCount. "foo" "bar"))
-
-(.run myobj)
+(compile 'org.wordcount)
