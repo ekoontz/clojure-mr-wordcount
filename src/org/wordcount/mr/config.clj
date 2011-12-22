@@ -1,15 +1,16 @@
-(ns org.wordcount.mr)
+(in-ns 'org.wordcount.mapreduce)
 
-(gen-class 
- :name org.wordcount.mr.Config
- :extends org.apache.hadoop.conf.Configured
+(gen-class
+ :name "org.wordcount.mapreduce.config"
+ :extends "org.apache.hadoop.conf.Configured"
  :implements ["org.apache.hadoop.util.Tool"]
- :prefix "tool-"
  :main true)
 
-(defn -initialize []
-  (println "initialization of mr..")
-  )
+;; now:
+;; (.getConf (org.wordcount.mapreduce.config.))
+;; works.
 
-(defn -main []
-  (println "config's main is being called.."))
+(defn -main [& args]
+  (println "inside tool-main..any backpacks around here?"))
+
+       
