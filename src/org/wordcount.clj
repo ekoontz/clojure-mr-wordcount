@@ -1,21 +1,15 @@
-(ns org.hadoopgen.gen_clojure)
+(ns org.wordcount)
 
-(defn do-gen-class [classname] 
-  (do
-    (println "DOING GEN CLASS..")
-    (let [stateValue 42]
-      (eval '(gen-class 
-              :name org.wordcount.WordCount
-              :extends com.wordcount.AbstractWordCount
-              :constructors {[String] [String]
-                             [String String] [String String]}
-              :implements [Runnable]
-              :init initialize
-              :state localState
-              :main true
-              :methods [[stateValue [] String]])))))
-
-(do-gen-class 'org.wordcount.WordCount)
+(gen-class 
+ :name org.wordcount.WordCount
+ :extends com.wordcount.AbstractWordCount
+ :constructors {[String] [String]
+                [String String] [String String]}
+ :implements [Runnable]
+ :init initialize
+ :state localState
+ :main true
+ :methods [[stateValue [] String]])
 
 (defn -initialize
   ([s1]
@@ -36,6 +30,8 @@
   (println "I'm a" (class this))
   (dosync (ref-set (.localState this) "GO")))
 
+(compile 'org.wordcount)
+
 (defn -main []
   (let [g (new org.wordcount.WordCount "READY")]
     (println (.getCurrentStatus g))
@@ -47,6 +43,8 @@
     (Thread/sleep 1000)
     (println (.stateValue g))))
 
+(.getSecret (org.wordcount.WordCount. "foo"))
 
+(def myobj (org.wordcount.WordCount. "foo" "bar"))
 
-  
+(.run myobj)
