@@ -8,7 +8,8 @@
  :methods [[stateValue [] String]])
 
 (defn -initialize [s1]
-  (println "Init value: " s1))
+  (println "A secret: " (.getSecret (org.wordcount.WordCount. "foo")))
+  (println "Aux init value: " s1))
 
 (defn -stateValue [this]
   @(.localState this))
