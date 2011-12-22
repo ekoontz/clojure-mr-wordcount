@@ -15,6 +15,9 @@ classes/com/wordcount/AbstractWordCount.class: src/com/wordcount/AbstractWordCou
 classes/org/wordcount/WordCount.class: lib/clojure-1.3.0.jar classes/com/wordcount/AbstractWordCount.class
 	echo "(compile 'org.wordcount)" | java -cp $(CLASSPATH) clojure.main
 
+classes/org/wordcount/Aux.class: lib/clojure-1.3.0.jar classes/com/wordcount/AbstractWordCount.class
+	echo "(compile 'org.wordcount.aux)" | java -cp $(CLASSPATH) clojure.main
+
 test: java_test clj_test
 	echo "all tests passed."
 
