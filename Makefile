@@ -1,5 +1,5 @@
 .PHONY: test clean repl clj_test mr_test java_test classes
-CLASSPATH=.:classes:src:lib/clojure-1.3.0.jar:lib/hadoop-core-0.20.205.1.jar
+CLASSPATH=.:classes:src:src/resources:lib/clojure-1.3.0.jar:lib/hadoop-core-0.20.205.1.jar:lib/commons-logging-1.1.1.jar
 clean:
 	-rm *.jar `find classes -name "*.class"` `find src -name "*~"` # remove class files and emacs auto-saved files.
 
@@ -35,7 +35,7 @@ java_test: classes/com/wordcount/AbstractWordCount.class classes/org/wordcount/W
 clj_test: lib/clojure-1.3.0.jar classes/org/wordcount/WordCount.class classes/org/wordcount/WordCount.class
 	echo "(load \"org/wordcount/test\")" | java -cp $(CLASSPATH) clojure.main
 
-mr_test: wc.jar
+mr_test: classes wc.jar
 	hadoop jar wc.jar org.wordcount.mapreduce hdfs://localhost:9000/hd-in hdfs://localhost:9000/hd-out 
 
 repl:
