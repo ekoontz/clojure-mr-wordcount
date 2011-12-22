@@ -1,6 +1,6 @@
 (ns org.wordcount.mapreduce
-       (:gen-class))
+  (:gen-class))
 
-(load "mr/config")
+(load "mr/tool")
 (load "mr/mapper")
 (load "mr/reducer")

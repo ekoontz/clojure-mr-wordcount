@@ -9,7 +9,7 @@ lib/clojure-1.3.0.jar:
 classes/org/wordcount classes/com/wordcount:
 	-mkdir -p $@
 
-classes: classes/org/wordcount/mr/config.class 
+classes: classes/org/wordcount/mr/tool.class 
 
 classes/com/wordcount/AbstractWordCount.class: src/com/wordcount/AbstractWordCount.java classes/com/wordcount
 	javac -d classes -cp .:classes $<
@@ -20,10 +20,10 @@ classes/org/wordcount/WordCount.class: lib/clojure-1.3.0.jar classes/com/wordcou
 classes/org/wordcount/Aux.class: lib/clojure-1.3.0.jar classes/com/wordcount/AbstractWordCount.class
 	echo "(compile 'org.wordcount.aux)" | java -cp $(CLASSPATH) clojure.main
 
-classes/org/wordcount/mr/config.class: lib/clojure-1.3.0.jar src/org/wordcount/mr/config.clj
+classes/org/wordcount/mr/tool.class: lib/clojure-1.3.0.jar src/org/wordcount/mr/tool.clj
 	echo "(compile 'org.wordcount.mapreduce)" | java -cp $(CLASSPATH) clojure.main
 
-wc.jar: classes/org/wordcount/mr/config.class
+wc.jar: classes/org/wordcount/mr/tool.class
 	jar -cf $@ classes
 
 test: classes java_test clj_test mr_test
