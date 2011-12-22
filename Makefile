@@ -1,5 +1,5 @@
 .PHONY: test clean repl clj_test mr_test java_test classes
-CLASSPATH=.:classes:src:src/resources:lib/clojure-1.3.0.jar:lib/hadoop-core-0.20.205.1.jar:lib/commons-logging-1.1.1.jar
+CLASSPATH=.:classes:src:lib/clojure-1.3.0.jar:lib/hadoop-core-0.20.205.1.jar:lib/commons-logging-1.1.1.jar:src/resources:
 clean:
 	-rm *.jar `find classes -name "*.class"` `find src -name "*~"` # remove class files and emacs auto-saved files.
 
@@ -21,7 +21,7 @@ classes/org/wordcount/Aux.class: lib/clojure-1.3.0.jar classes/com/wordcount/Abs
 	echo "(compile 'org.wordcount.aux)" | java -cp $(CLASSPATH) clojure.main
 
 classes/org/wordcount/mr/tool.class: lib/clojure-1.3.0.jar src/org/wordcount/mr/tool.clj
-	echo "(compile 'org.wordcount.mapreduce)" | java -cp $(CLASSPATH) clojure.main
+	echo "(try (compile 'org.wordcount.mapreduce) (catch java.lang.RuntimeException exit-with-error (System/exit 1))) " | java -cp $(CLASSPATH) clojure.main
 
 wc.jar: classes/org/wordcount/mr/tool.class
 	jar -cf $@ classes

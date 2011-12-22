@@ -1,6 +1,8 @@
 (in-ns 'org.wordcount.mapreduce)
 (import 'java.util.StringTokenizer)
 (import 'org.apache.hadoop.util.Tool)
+(import '(org.apache.hadoop.mapred JobConf))
+(import '(org.apache.hadoop.io Text LongWritable))
 
 (gen-class
  :name "org.wordcount.mapreduce.tool"
@@ -13,7 +15,14 @@
 ;; works.
 
 (defn -run [#^Tool this args]
-  (println "THE RUN METHOD IS HERE, ok?")
+  (println "Here we go..")
+  (doto (JobConf. (.getConf this) (.getClass this))
+    (.setJobName "mywordcount")
+    (.setOutputKeyClass Text)
+    (.setOutputValueClass LongWritable)
+    )
+
+  (println "Done running: returning 0 now.")
   0)
 
 (defn -main [& args]
