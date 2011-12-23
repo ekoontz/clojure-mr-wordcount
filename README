@@ -1,9 +1,11 @@
-Intro:
+Introduction:
 
-I started with Stuart Sierra's clojure-hadoop repository and updated it for my purposes. 
+This is based on Stuart Sierra's https://github.com/stuartsierra/clojure-hadoop.git and adapted for my purposes. 
+It uses a Makefile because I'm not versed well enough in leiningen to use the latter solely. Pull requests requested.
 
 Prerequisites:
     -Java JDK (tested with OpenJDK Runtime Environment (IcedTea6 1.9.10) (amazon-52.1.9.10.40.amzn1-x86_64)
+    -Apache Ant (tested with version 1.8.1)
     -Apache Maven (tested with Apache Maven 3.0.3 (r1075438; 2011-02-28 17:31:09+0000)
     -GNU Make (tested with 3.81)
 
