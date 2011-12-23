@@ -1,6 +1,6 @@
 (in-ns 'org.wordcount.foo)
-(import 'java.util.StringTokenizer)
-(import 'org.apache.hadoop.util.Tool)
+(import '(java.util StringTokenizer))
+(import '(org.apache.hadoop.util Tool))
 (import '(org.apache.hadoop.mapred JobConf TextInputFormat TextOutputFormat FileInputFormat FileOutputFormat JobClient))
 (import '(org.apache.hadoop.io Text LongWritable))
 (import '(org.apache.hadoop.fs Path))
