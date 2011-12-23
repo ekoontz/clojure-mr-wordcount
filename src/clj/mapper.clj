@@ -4,12 +4,11 @@
 (import '(org.apache.hadoop.io LongWritable))
 
 (gen-class
- :name "wordcount.mapreduce.mapper"
+ :name "wordcount.mapper"
  :extends "org.apache.hadoop.mapred.MapReduceBase"
- :implements ["org.apache.hadoop.mapred.Mapper"]
- :prefix "mapper-")
+ :implements ["org.apache.hadoop.mapred.Mapper"])
 
-(defn mapper-map
+(defn -map
   "This is our implementation of the Mapper.map method.  The key and
   value arguments are sub-classes of Hadoop's Writable interface, so
   we have to convert them to strings or some other type before we can

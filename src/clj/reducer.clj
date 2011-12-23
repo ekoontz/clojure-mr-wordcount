@@ -1,12 +1,11 @@
 (in-ns 'wordcount)
 
 (gen-class
- :name "wordcount.mapreduce.reducer"
+ :name "wordcount.reducer"
  :extends "org.apache.hadoop.mapred.MapReduceBase"
- :implements ["org.apache.hadoop.mapred.Reducer"]
- :prefix "reducer-")
+ :implements ["org.apache.hadoop.mapred.Reducer"])
 
-(defn reducer-reduce 
+(defn -reduce 
   "This is our implementation of the Reducer.reduce method.  The key
   argument is a sub-class of Hadoop's Writable, but 'values' is a Java
   Iterator that returns successive values.  We have to use
