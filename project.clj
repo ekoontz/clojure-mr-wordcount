@@ -22,7 +22,7 @@
                  [commons-configuration "1.6"]
                  [commons-logging "1.1.1"]
                  [junit/junit "4.7"]
-		 [org.apache.hadoop/hadoop-core "0.20.205.1"]
+                 [org.apache.hadoop/hadoop-core "0.20.205.1"]
                  [org.mortbay.jetty/servlet-api-2.5 "6.1.14"]
                  [org.codehaus.jackson/jackson-core-asl "1.8.2"]
                  [org.codehaus.jackson/jackson-mapper-asl "1.8.2"]]
