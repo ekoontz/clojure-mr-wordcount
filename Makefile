@@ -1,7 +1,8 @@
 # run "make clean reload test" to exercise all functionality.
-.PHONY: test clean repl wordcount-test classes load clear-input reload
+.PHONY: test clean repl classes load clear-input reload
 CLASSPATH=.:classes:src:lib/clojure-1.3.0.jar:lib/hadoop-core-0.20.205.1.jar:lib/commons-logging-1.1.1.jar:lib/jackson-mapper-asl-1.8.2.jar:lib/jackson-core-asl-1.8.2.jar:src/resources:
 HDFS_ROOT=hdfs://localhost:9000
+SOURCES=src/org/wordcount/wordcount.clj src/org/wordcount/tool.clj src/org/wordcount/reducer.clj src/org/wordcount/mapper.clj
 
 clean:
 	-rm *.jar `find classes -name "*.class"` `find src -name "*~"` # remove class files and emacs auto-saved files.
@@ -10,7 +11,7 @@ lib/clojure-1.3.0.jar:
 #this loads in all the libraries (not just lib/clojure-1.3.0.jar: see project.clj for set of dependencies).
 	lein deps
 
-classes/org/wordcount classes/com/wordcount:
+classes/org/wordcount:
 	-mkdir -p $@
 
 load:
@@ -23,14 +24,12 @@ clear-input:
 
 reload: clear-input load
 
-classes: classes/org/wordcount/wordcount.class 
-
-classes/org/wordcount/wordcount.class: lib/clojure-1.3.0.jar src/org/wordcount/wordcount.clj
+classes: lib/clojure-1.3.0.jar $(SOURCES)
 	mkdir -p classes/org/wordcount
 	echo "(try (compile 'org.wordcount.wordcount) (catch java.lang.RuntimeException compiler-error (do (println compiler-error) (System/exit 1))))  " | java -cp $(CLASSPATH) clojure.main
 
-wordcount.jar: classes/org/wordcount/wordcount.class
-	jar -cf $@ classes
+wordcount.jar: classes
+	jar -cf $@ $<
 
 test: wordcount.jar classes
 	-hadoop fs -rmr $(HDFS_ROOT)/hd-out/
