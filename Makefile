@@ -48,22 +48,3 @@ summary:
 repl:
 	rlwrap java -cp $(CLASSPATH) clojure.main
 
-#java_test and clj_test are older and don't use the same classes: needs work for 
-#integration with wordcount-test.
-java_test: classes/com/wordcount/AbstractWordCount.class classes/org/wordcount/WordCount.class
-	java -cp $(CLASSPATH) org.wordcount.WordCount
-
-clj_test: lib/clojure-1.3.0.jar classes/org/wordcount/WordCount.class classes/org/wordcount/WordCount.class
-	echo "(load \"org/wordcount/test\")" | java -cp $(CLASSPATH) clojure.main
-
-#TODO: rename: has nothing to do with WordCount.
-classes/com/wordcount/AbstractWordCount.class: src/com/wordcount/AbstractWordCount.java classes/com/wordcount
-	javac -d classes -cp .:classes $<
-
-#TODO: rename: has nothing to do with WordCount.
-classes/org/wordcount/WordCount.class: lib/clojure-1.3.0.jar classes/com/wordcount/AbstractWordCount.class
-	echo "(compile 'org.wordcount)" | java -cp $(CLASSPATH) clojure.main
-
-#TODO: rename: has nothing to do with WordCount.
-classes/org/wordcount/Aux.class: lib/clojure-1.3.0.jar classes/com/wordcount/AbstractWordCount.class
-	echo "(compile 'org.wordcount.aux)" | java -cp $(CLASSPATH) clojure.main
