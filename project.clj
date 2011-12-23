@@ -1,7 +1,7 @@
 ;; TODO: move functionality out of Makefile and into here as I gradually learn leiningen.
-(defproject cia-ch-5 "1.0.0-SNAPSHOT"
+(defproject clojure-mr-wordcount "1.0.0-SNAPSHOT"
   :jvm-opts ["-Xmx768m" "-server"]
-  :description "experiments based on Chapter 5 of Clojure In Action by Amit Rathore."
+  :description "Clojure integration with Hadoop MapReduce."
   :javac-options {:debug "true" :fork "true"}
   :repositories {"conjars" "http://conjars.org/repo/"
                  "bixo" "http://bixo.github.com/repo"
