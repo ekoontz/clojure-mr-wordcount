@@ -1,7 +1,6 @@
 Prerequisites:
     -Java JDK (tested with OpenJDK Runtime Environment (IcedTea6 1.9.10) (amazon-52.1.9.10.40.amzn1-x86_64)
     -Apache Maven (tested with Apache Maven 3.0.3 (r1075438; 2011-02-28 17:31:09+0000)
-
     -GNU Make (tested with 3.81)
 
 Building:
