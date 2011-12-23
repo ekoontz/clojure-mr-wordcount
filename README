@@ -1,13 +1,26 @@
-HOWTO: 
+Prerequisites:
+    -Java JDK (tested with OpenJDK Runtime Environment (IcedTea6 1.9.10) (amazon-52.1.9.10.40.amzn1-x86_64)
+    -Apache Maven (tested with Apache Maven 3.0.3 (r1075438; 2011-02-28 17:31:09+0000)
+    -GNU Make (tested with 3.81)
 
-run "make clean reload test"
+Building:
+    -Leiningen:
+	git clone https://github.com/technomancy/leiningen.git
+	cd leiningen
+	git checkout stable
+	lein self-install
 
-TODO: 
+    -Hadoop:
+        git clone https://github.com/apache/hadoop-common.git 
+        cd hadoop-common
+        git checkout branch-0.20-security-205
+	ant
+	VERSION=0.20.205.1 mvn install:install-file -DgroupId=org.apache.hadoop -DartifactId=hadoop-core -Dversion=$VERSION -Dpackaging=jar -Dfile=build/hadoop-core-$VERSION.jar
 
-Better leiningen integration: for now, it's only used to fetch the dependencies. Should try to move functionality
-from the Makefile to leiningen.
+Running:
+     1. Start hadoop cluster with configuration provided in src/resources
+     2. make clean reload test
 
-
-
+TODO: better leiningen integration: for now, it's only used to fetch the clojure jar.
 
 
