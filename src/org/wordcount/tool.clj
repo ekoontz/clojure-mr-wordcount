@@ -1,4 +1,4 @@
-(in-ns 'org.wordcount.mapreduce)
+(in-ns 'org.wordcount.foo)
 (import 'java.util.StringTokenizer)
 (import 'org.apache.hadoop.util.Tool)
 (import '(org.apache.hadoop.mapred JobConf TextInputFormat TextOutputFormat FileInputFormat FileOutputFormat JobClient))
@@ -7,7 +7,7 @@
 (import '(org.codehaus.jackson.map JsonMappingException))
 
 (gen-class
- :name "org.wordcount.mapreduce.tool"
+ :name "org.wordcount.foo.tool"
  :extends "org.apache.hadoop.conf.Configured"
  :implements ["org.apache.hadoop.util.Tool"]
  :main true)
@@ -37,5 +37,5 @@
     (System/exit
      (org.apache.hadoop.util.ToolRunner/run 
       (new org.apache.hadoop.conf.Configuration)
-      (. (Class/forName "org.wordcount.mapreduce.tool") newInstance)
+      (. (Class/forName "org.wordcount.foo.tool") newInstance)
       (into-array String args)))))

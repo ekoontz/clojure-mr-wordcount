@@ -1,4 +1,4 @@
-(ns org.wordcount.mapreduce
+(ns org.wordcount.foo
   (:gen-class))
 
 (load "tool")
