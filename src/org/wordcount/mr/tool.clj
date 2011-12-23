@@ -13,9 +13,11 @@
  :main true)
 
 (defn -run [#^Tool this args]
+  (println "The wordcount job has begun.");
+
   (doto (JobConf. (.getConf this) (.getClass this))
     (.setJobName "doesThisNameMatterOrNot")
-    (.setJar "wc.jar")
+    (.setJar "wordcount.jar")
     (.setOutputKeyClass Text)
     (.setOutputValueClass LongWritable)
     (.setMapperClass (Class/forName "org.wordcount.mapreduce.mapper"))
@@ -27,7 +29,7 @@
     (JobClient/runJob)
     )
 
-  (println "Done running: returning 0 now.")
+  (println "The wordcount job has finished.");
   0)
 
 (defn -main [& args]
