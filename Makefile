@@ -32,13 +32,11 @@ classes/org/wordcount/tool.class: lib/clojure-1.3.0.jar src/org/wordcount/tool.c
 wordcount.jar: classes/org/wordcount/tool.class
 	jar -cf $@ classes
 
-test: classes wordcount-test
-	echo "all tests passed."
-
-wordcount-test: wordcount.jar
+test: wordcount.jar classes
 	-hadoop fs -rmr $(HDFS_ROOT)/hd-out/
 	hadoop jar wordcount.jar org.wordcount.mapreduce $(HDFS_ROOT)/hd-in $(HDFS_ROOT)/hd-out
 	make summary 
+	echo "all tests passed."
 
 summary: 
 #show the top 20 most-frequent words.
