@@ -1,4 +1,4 @@
-(in-ns 'org.wordcount.foo)
+(in-ns 'org.wordcount.wordcount)
 
 (gen-class
  :name "org.wordcount.mapreduce.reducer"

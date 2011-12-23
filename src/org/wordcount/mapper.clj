@@ -1,4 +1,4 @@
-(in-ns 'org.wordcount.foo)
+(in-ns 'org.wordcount.wordcount)
 (import 'java.util.StringTokenizer)
 (import '(org.apache.hadoop.mapred OutputCollector))
 (import '(org.apache.hadoop.io LongWritable))

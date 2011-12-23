@@ -27,14 +27,14 @@ classes: classes/org/wordcount/tool.class
 
 classes/org/wordcount/tool.class: lib/clojure-1.3.0.jar src/org/wordcount/tool.clj
 	mkdir -p classes/org/wordcount
-	echo "(try (compile 'org.wordcount.foo) (catch java.lang.RuntimeException compiler-error (do (println compiler-error) (System/exit 1))))  " | java -cp $(CLASSPATH) clojure.main
+	echo "(try (compile 'org.wordcount.wordcount) (catch java.lang.RuntimeException compiler-error (do (println compiler-error) (System/exit 1))))  " | java -cp $(CLASSPATH) clojure.main
 
 wordcount.jar: classes/org/wordcount/tool.class
 	jar -cf $@ classes
 
 test: wordcount.jar classes
 	-hadoop fs -rmr $(HDFS_ROOT)/hd-out/
-	hadoop jar wordcount.jar org.wordcount.foo $(HDFS_ROOT)/hd-in $(HDFS_ROOT)/hd-out
+	hadoop jar wordcount.jar org.wordcount.wordcount $(HDFS_ROOT)/hd-in $(HDFS_ROOT)/hd-out
 	make summary 
 	echo "all tests passed."
 
