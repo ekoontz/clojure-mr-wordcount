@@ -26,6 +26,7 @@ reload: clear-input load
 classes: classes/org/wordcount/mr/tool.class 
 
 classes/org/wordcount/mr/tool.class: lib/clojure-1.3.0.jar src/org/wordcount/mr/tool.clj
+	mkdir -p classes/org/wordcount/mr
 	echo "(try (compile 'org.wordcount.mapreduce) (catch java.lang.RuntimeException compiler-error (do (println compiler-error) (System/exit 1))))  " | java -cp $(CLASSPATH) clojure.main
 
 wordcount.jar: classes/org/wordcount/mr/tool.class
