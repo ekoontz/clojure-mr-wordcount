@@ -1,4 +1,13 @@
-Run: "make clean test".
-TODO: better leiningen integration: for now, it's only used to fetch the clojure jar.
+HOWTO: 
+
+run "make clean reload test"
+
+TODO: 
+
+Better leiningen integration: for now, it's only used to fetch the dependencies. Should try to move functionality
+from the Makefile to leiningen.
+
+
+
 
 
