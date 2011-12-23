@@ -1,6 +1,6 @@
 (ns org.wordcount.mapreduce
   (:gen-class))
 
-(load "mr/tool")
-(load "mr/mapper")
-(load "mr/reducer")
+(load "wc/tool")
+(load "wc/mapper")
+(load "wc/reducer")
