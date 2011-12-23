@@ -23,13 +23,13 @@ clear-input:
 
 reload: clear-input load
 
-classes: classes/org/wordcount/tool.class 
+classes: classes/org/wordcount/wordcount.class 
 
-classes/org/wordcount/tool.class: lib/clojure-1.3.0.jar src/org/wordcount/tool.clj
+classes/org/wordcount/wordcount.class: lib/clojure-1.3.0.jar src/org/wordcount/wordcount.clj
 	mkdir -p classes/org/wordcount
 	echo "(try (compile 'org.wordcount.wordcount) (catch java.lang.RuntimeException compiler-error (do (println compiler-error) (System/exit 1))))  " | java -cp $(CLASSPATH) clojure.main
 
-wordcount.jar: classes/org/wordcount/tool.class
+wordcount.jar: classes/org/wordcount/wordcount.class
 	jar -cf $@ classes
 
 test: wordcount.jar classes
