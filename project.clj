@@ -7,7 +7,6 @@
                  "bixo" "http://bixo.github.com/repo"
                  "mvn" "http://mvnrepository.com"}
   :dependencies [[org.clojure/clojure "1.3.0"]
-                 [org.clojure/clojure-contrib "1.2.0"]
                  ;; jgrapht exclusion works around cascading pom bug
                  ;; that causes projects dependent on cascalog to not
                  ;; be able to find jgrapht.
