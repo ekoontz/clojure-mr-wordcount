@@ -1,10 +1,10 @@
-(in-ns 'org.wordcount.wordcount)
+(in-ns 'wordcount)
 (import 'java.util.StringTokenizer)
 (import '(org.apache.hadoop.mapred OutputCollector))
 (import '(org.apache.hadoop.io LongWritable))
 
 (gen-class
- :name "org.wordcount.mapreduce.mapper"
+ :name "wordcount.mapreduce.mapper"
  :extends "org.apache.hadoop.mapred.MapReduceBase"
  :implements ["org.apache.hadoop.mapred.Mapper"]
  :prefix "mapper-")

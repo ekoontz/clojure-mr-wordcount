@@ -1,4 +1,4 @@
-(ns org.wordcount.wordcount
+(ns wordcount
   (:gen-class))
 
 (load "tool")

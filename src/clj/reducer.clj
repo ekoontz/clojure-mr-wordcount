@@ -1,7 +1,7 @@
-(in-ns 'org.wordcount.wordcount)
+(in-ns 'wordcount)
 
 (gen-class
- :name "org.wordcount.mapreduce.reducer"
+ :name "wordcount.mapreduce.reducer"
  :extends "org.apache.hadoop.mapred.MapReduceBase"
  :implements ["org.apache.hadoop.mapred.Reducer"]
  :prefix "reducer-")

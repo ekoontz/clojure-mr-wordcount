@@ -1,4 +1,4 @@
-(in-ns 'org.wordcount.wordcount)
+(in-ns 'wordcount)
 (import '(java.util StringTokenizer))
 (import '(org.apache.hadoop.util Tool))
 (import '(org.apache.hadoop.mapred JobConf TextInputFormat TextOutputFormat FileInputFormat FileOutputFormat JobClient))
@@ -7,7 +7,7 @@
 (import '(org.codehaus.jackson.map JsonMappingException))
 
 (gen-class
- :name "org.wordcount.wordcount.tool"
+ :name "wordcount.tool"
  :extends "org.apache.hadoop.conf.Configured"
  :implements ["org.apache.hadoop.util.Tool"]
  :main true)
@@ -20,8 +20,8 @@
     (.setJar "wordcount.jar")
     (.setOutputKeyClass Text)
     (.setOutputValueClass LongWritable)
-    (.setMapperClass (Class/forName "org.wordcount.mapreduce.mapper"))
-    (.setReducerClass (Class/forName "org.wordcount.mapreduce.reducer"))
+    (.setMapperClass (Class/forName "wordcount.mapreduce.mapper"))
+    (.setReducerClass (Class/forName "wordcount.mapreduce.reducer"))
     (.setInputFormat TextInputFormat)
     (.setOutputFormat TextOutputFormat)
     (FileInputFormat/setInputPaths (first args))
@@ -37,5 +37,5 @@
     (System/exit
      (org.apache.hadoop.util.ToolRunner/run 
       (new org.apache.hadoop.conf.Configuration)
-      (. (Class/forName "org.wordcount.wordcount.tool") newInstance)
+      (. (Class/forName "wordcount.tool") newInstance)
       (into-array String args)))))
